@@ -78,15 +78,15 @@ translate([-B_PCB,-(B_PCB+2*D)/2,0]) {
 			cube([1, (B_PCB+2*D)/2, 3*D]);
 	}
 		
-	clip(H_CLIP,2,0.8);
-	translate([L_BRIDGE-2,0,0])
-		clip(H_CLIP,2,0.8);
+	clip(H_CLIP,L_CLIP,0.8);
+	translate([L_BRIDGE-L_CLIP,0,0])
+		clip(H_CLIP,L_CLIP,0.8);
 	
 	translate([L_BRIDGE,B_PCB+2*D,0]){
 		rotate([0,0,180]){
-			clip(H_CLIP,2,0.8);
-			translate([L_BRIDGE-2,0,0])
-				clip(H_CLIP,2,0.8);
+			clip(H_CLIP,L_CLIP,0.8);
+			translate([L_BRIDGE-L_CLIP,0,0])
+				clip(H_CLIP,L_CLIP,0.8);
 		}
 	}
 
