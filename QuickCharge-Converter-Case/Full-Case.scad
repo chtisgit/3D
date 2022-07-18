@@ -93,18 +93,21 @@ translate([-D,30-(B_PCB+2*D)/2,0]) {
 		cube([D,2,H_TOP_COMP+D]);
 	cube([D,B_PCB,H_TOP_COMP-H_USBA+D]);
 	
-	translate([2,0,0])
-		clip(H_CLIP,L_CLIP,0.8);
-	translate([L_PCB+2*D-L_CLIP-2,0,0])
-		clip(H_CLIP,L_CLIP,0.8);
+	clip_start_z = H_TOP_COMP+D-4;
+	//clip_start_z=0;
+	
+	translate([2,0,clip_start_z])
+		clip(H_CLIP-clip_start_z,L_CLIP,0.8);
+	translate([L_PCB+2*D-L_CLIP-2,0,clip_start_z])
+		clip(H_CLIP-clip_start_z,L_CLIP,0.8);
 	
 
-	translate([2+L_CLIP,B_PCB+2*D,0])
+	translate([2+L_CLIP,B_PCB+2*D,clip_start_z])
 	rotate([0,0,180])
-		clip(H_CLIP,L_CLIP,0.8);
-	translate([L_PCB+2*D-2,B_PCB+2*D,0])
+		clip(H_CLIP-clip_start_z,L_CLIP,0.8);
+	translate([L_PCB+2*D-2,B_PCB+2*D,clip_start_z])
 	rotate([0,0,180])
-		clip(H_CLIP,L_CLIP,0.8);
+		clip(H_CLIP-clip_start_z,L_CLIP,0.8);
 
 
 	// Sides
