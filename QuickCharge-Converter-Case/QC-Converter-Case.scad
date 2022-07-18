@@ -13,7 +13,7 @@ D = 1.2;
 
 L_BRIDGE = 7;
 
-H_CLIP = H_PCB_COMP+D;
+H_CLIP = H_PCB_COMP+2*D+1;
 L_CLIP = 2;
 
 translate([0,-B_PCB/2,0]) {	
@@ -21,28 +21,28 @@ translate([0,-B_PCB/2,0]) {
 	
 	// Front with holes for USB
 	translate([-D,0,0])
-		cube([D, 4, H_PCB_COMP]);
-	translate([-D,-D,H_PCB_COMP])
+		cube([D, 4, H_PCB_COMP+D]);
+	translate([-D,-D,H_PCB_COMP+D])
 		cube([D, 2+D, 6]);
 	
 	translate([-D,B_PCB-4,0])
-		cube([D, 4, H_PCB_COMP]);
-	translate([-D,B_PCB-2,H_PCB_COMP])
+		cube([D, 4, H_PCB_COMP+D]);
+	translate([-D,B_PCB-2,H_PCB_COMP+D])
 		cube([D, 2+D, 6]);
 	
-	translate([-D,-D,H_PCB_COMP+6])
+	translate([-D,-D,H_PCB_COMP+6+D])
 		cube([D, B_PCB+2*D, D]);
 	
 	// Back
 	translate([L_PCB,0,0]){
-		cube([D, B_PCB, H_PCB_COMP]);
-		translate([0, 3, H_PCB_COMP])
+		cube([D, B_PCB, H_PCB_COMP+D]);
+		translate([0, 3, H_PCB_COMP+D])
 			cube([D, B_PCB-6, 4]);
 	}
 	// Sides
 	translate([-D,-D,0])
 		difference() {
-			cube([L_PCB+2*D, D, H_PCB_COMP]);
+			cube([L_PCB+2*D, D, H_PCB_COMP+D]);
 			translate([12,-1,-1])
 				cube([L_CLIP, 2, 2]);
 			translate([12+L_BRIDGE-L_CLIP,-1,-1])
@@ -53,7 +53,7 @@ translate([0,-B_PCB/2,0]) {
 
 	translate([-D, B_PCB, 0])
 		difference() {
-			cube([L_PCB+2*D, D, H_PCB_COMP]);
+			cube([L_PCB+2*D, D, H_PCB_COMP+D]);
 			translate([12,-1+D,-1])
 				cube([L_CLIP, 2, 2]);
 			translate([12+L_BRIDGE-L_CLIP,-1+D,-1])
