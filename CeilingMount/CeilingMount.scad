@@ -1,15 +1,17 @@
 TOP_H = 15; // mm
-TOP_R = 125; // mm
+TOP_R = 75; // mm
 TOP_ANGLE = 90; // degrees
 TOP_FINAL_POS_INDENT = 3; // mm
-TOP_CENTER_SCREW = true; // true/false
+TOP_CENTER_SCREW = false; // true/false
 TOP_OUTER_SCREWS = 2; // #
+TOP_SCREW_INDENT_H = 5; // mm
 
 SCREW_HOLE_D = 6.4; // mm
 SCREW_HOLE_R = SCREW_HOLE_D/2;
-TOP_OUTER_SCREW_DIST = TOP_R - 20 - SCREW_HOLE_R;
 SCREW_TOP_D = 11; // mm
 SCREW_TOP_R = SCREW_TOP_D/2;
+
+TOP_OUTER_SCREW_DIST = TOP_R - 20 - SCREW_HOLE_R;
 
 KNOB_R1 = 10; // mm
 KNOB_R2 = 15; // mm
@@ -46,8 +48,7 @@ module arc(radius, angles, width = 1, fn = 24) {
         sector(radius + width, angles, fn);
         sector(radius, angles, fn);
     }
-} 
-
+}
 
 difference() {
     
@@ -92,15 +93,22 @@ difference() {
 
         };
         
-    if (TOP_CENTER_SCREW)
+    if (TOP_CENTER_SCREW) {
         translate([0,0,-TOP_H])
-        cylinder(h = TOP_H*3, r = SCREW_HOLE_R, $fn = fn);
+            cylinder(h = TOP_H*3, r = SCREW_HOLE_R, $fn = fn);
+        translate([0,0,TOP_H - TOP_SCREW_INDENT_H])
+            cylinder(h = TOP_H, r = SCREW_TOP_R , $fn = fn);
+    }
     
     if (TOP_OUTER_SCREWS > 0)
         for ( i = [0 : 360 / TOP_OUTER_SCREWS : 360] ) {
             rotate([0, 0, i-45])
             translate([TOP_OUTER_SCREW_DIST,0,-TOP_H])
             cylinder(h = TOP_H*3, r = SCREW_HOLE_R, $fn = fn);
+            
+            rotate([0, 0, i-45])
+            translate([TOP_OUTER_SCREW_DIST,0,TOP_H - TOP_SCREW_INDENT_H])
+            cylinder(h = TOP_H, r = SCREW_TOP_R, $fn = fn);
         }
 }
 
