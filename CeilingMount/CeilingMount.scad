@@ -17,7 +17,7 @@ KNOB_R1 = 10; // mm
 KNOB_R2 = 15; // mm
 KNOB_DIST = TOP_R;
 KNOB_H1 = 4; // mm
-KNOB_H2 = TOP_H;
+KNOB_H2 = TOP_H-KNOB_H1+1;
 KNOB_SCREW_INDENT_H = 3; // mm
 KNOB_CONNECTOR_H = 2; // mm
 
@@ -96,8 +96,8 @@ difference() {
     if (TOP_CENTER_SCREW) {
         translate([0,0,-TOP_H])
             cylinder(h = TOP_H*3, r = SCREW_HOLE_R, $fn = fn);
-        translate([0,0,TOP_H - TOP_SCREW_INDENT_H])
-            cylinder(h = TOP_H, r = SCREW_TOP_R , $fn = fn);
+        translate([0,0,-1])
+            cylinder(h = 1+TOP_SCREW_INDENT_H, r = SCREW_TOP_R , $fn = fn);
     }
     
     if (TOP_OUTER_SCREWS > 0)
@@ -107,8 +107,8 @@ difference() {
             cylinder(h = TOP_H*3, r = SCREW_HOLE_R, $fn = fn);
             
             rotate([0, 0, i-45])
-            translate([TOP_OUTER_SCREW_DIST,0,TOP_H - TOP_SCREW_INDENT_H])
-            cylinder(h = TOP_H, r = SCREW_TOP_R, $fn = fn);
+            translate([TOP_OUTER_SCREW_DIST,0,-1])
+            cylinder(h = 1+TOP_SCREW_INDENT_H, r = SCREW_TOP_R, $fn = fn);
         }
 }
 
