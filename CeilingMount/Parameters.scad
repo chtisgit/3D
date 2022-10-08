@@ -2,14 +2,13 @@ TOP_H = 15; // mm
 TOP_R = 75; // mm
 TOP_ANGLE = 90; // degrees
 TOP_FINAL_POS_INDENT = 3; // mm
-TOP_CENTER_SCREW = false; // true/false
-TOP_OUTER_SCREWS = 2; // #
 TOP_SCREW_INDENT_H = 5; // mm
 
 SCREW_HOLE_D = 6.4; // mm
 SCREW_HOLE_R = SCREW_HOLE_D/2;
 SCREW_TOP_D = 11; // mm
 SCREW_TOP_R = SCREW_TOP_D/2;
+ELONGATED_SCREW_HOLE_EXTRA_L = 10; // mm
 
 TOP_OUTER_SCREW_DIST = TOP_R - 20 - SCREW_HOLE_R;
 
