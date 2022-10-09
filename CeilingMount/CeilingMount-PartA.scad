@@ -35,21 +35,21 @@ difference() {
 
     translate([0,0,-TOP_H])
     linear_extrude(TOP_H*3)
-        arc(KNOB_DIST/2 - KNOB_R1_HOLE, [0, TOP_ANGLE], KNOB_R1_HOLE*2);
+        arc(KNOB_DIST/2 - KNOB_R1_HOLE, [0, TOP_ANGLE], KNOB_R1_HOLE*2, fn);
       
     translate([0,0,-TOP_H])
     linear_extrude(TOP_H*3)
-        arc(KNOB_DIST/2 - KNOB_R1_HOLE, [180, 180+TOP_ANGLE], KNOB_R1_HOLE*2);
+        arc(KNOB_DIST/2 - KNOB_R1_HOLE, [180, 180+TOP_ANGLE], KNOB_R1_HOLE*2, fn);
 
 
     translate([0,0,TOP_H-KNOB_H1-1])
     linear_extrude(KNOB_H1+5)
-        arc(KNOB_DIST/2 - KNOB_R2_HOLE, [0, TOP_ANGLE], KNOB_R2_HOLE*2);
+        arc(KNOB_DIST/2 - KNOB_R2_HOLE, [0, TOP_ANGLE], KNOB_R2_HOLE*2, fn);
 
         
     translate([0,0,TOP_H-KNOB_H1-1])
     linear_extrude(KNOB_H1+5)
-        arc(KNOB_DIST/2 - KNOB_R2_HOLE, [180, 180+TOP_ANGLE], KNOB_R2_HOLE*2);
+        arc(KNOB_DIST/2 - KNOB_R2_HOLE, [180, 180+TOP_ANGLE], KNOB_R2_HOLE*2, fn);
         
     
     rotate([0,0,TOP_ANGLE])

@@ -16,9 +16,13 @@ difference() {
             knob(KNOB_H1, KNOB_H2, KNOB_R1, KNOB_R2, fn);
         
         translate([-KNOB_DIST/2,0,0])
-            union() {
-                translate([0,-KNOB_R1,0])
-                    cube([KNOB_DIST,KNOB_R1*2, KNOB_CONNECTOR_H]);
+            union() {    
+		translate([0,-KNOB_R1,0])
+                linear_extrude(KNOB_CONNECTOR_H) {
+                    polygon([[0,0], [KNOB_R2-5, 0], [KNOB_R2, KNOB_R2*.45], [KNOB_DIST-KNOB_R2, KNOB_R2*.45], [KNOB_DIST-KNOB_R2+5,0], [KNOB_DIST,0],[KNOB_DIST,KNOB_R1*2],[KNOB_DIST-KNOB_R2+5,KNOB_R1*2],[KNOB_DIST-KNOB_R2,KNOB_R1*2-KNOB_R2*.45],[KNOB_R2,KNOB_R1*2-KNOB_R2*.45],[KNOB_R2-5,KNOB_R1*2],[0,KNOB_R1*2]]);
+		}
+		    
+		
                 translate([0, 0, 0])
                     cylinder(h=KNOB_CONNECTOR_H, r=KNOB_R1, $fn=fn);
                 translate([KNOB_DIST, 0, 0])
